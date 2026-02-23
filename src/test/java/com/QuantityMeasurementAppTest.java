@@ -56,4 +56,36 @@ class QuantityMeasurementAppTest {
         assertTrue(f1.equals(f1), 
                 "Expected object to be equal to itself (reflexive property)");
     }
+    @Test 
+    public void testInchesEquality_SameValue() {
+    	QuantityMeasurementApp.Inches i1 = new QuantityMeasurementApp.Inches(5.0);
+    	QuantityMeasurementApp.Inches i2 = new QuantityMeasurementApp.Inches(5.0);
+    	
+    	assertTrue(i1.equals(i2));
+    }
+    @Test
+    public void testInchesEquality_NullComoparison() {
+    	QuantityMeasurementApp.Inches inch = new QuantityMeasurementApp.Inches(5.0);
+    	
+    	assertFalse(inch.equals(null));
+    }
+    @Test
+    public void testInchesEquality_DifferentValue() {
+    	QuantityMeasurementApp.Inches i1 = new QuantityMeasurementApp.Inches(5.0);
+    	QuantityMeasurementApp.Inches i2 = new QuantityMeasurementApp.Inches(6.0);
+    	
+    	assertFalse(i1.equals(i2));
+    }
+    @Test
+    public void testInchesEquality_sameReference() {
+    	QuantityMeasurementApp.Inches inch = new QuantityMeasurementApp.Inches(5.0);
+    	
+    	assertTrue(inch.equals(inch));
+    }
+    @Test
+    public void testInchesEquality_DiffrentClass() {
+    	QuantityMeasurementApp.Inches inch = new QuantityMeasurementApp.Inches(5.0);
+    	
+    	assertFalse(inch.equals("1"));
+    }
 }
