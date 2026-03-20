@@ -1,10 +1,10 @@
-package com.app.quantity_measurement_app;
+package com.app.quantitymeasurement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class QuantityMeasurementAppApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,4 +1,4 @@
-package com.app.quantity_measurement_app;
+package com.app.quantitymeasurement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
