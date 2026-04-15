@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/qma_db
+    username: root
+    password: ${db_password}
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${google_client_id}
+            client-secret: ${google_client_secret}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+security:
+  jwt:
+    secret: 9f3c2a4b8e1d6c7f5a9b0c3d4e2f1a6b7c8d9e0f1234567890abcdef12345678

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.quantitymeasurement.model.QuantityMeasurementEntity;
 
-@Repository 
+@Repository
 public interface QuantityMeasurementRepository extends JpaRepository<QuantityMeasurementEntity, Long> {
     // Find all measurements by operation type
     List<QuantityMeasurementEntity> findByOperation(String operation);

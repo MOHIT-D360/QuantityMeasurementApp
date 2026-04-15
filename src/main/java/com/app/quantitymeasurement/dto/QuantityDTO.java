@@ -1,4 +1,4 @@
-package com.app.quantitymeasurement.model;
+package com.app.quantitymeasurement.dto;
 
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotEmpty;
@@ -20,13 +20,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class QuantityDTO {
     private static final Logger logger = Logger.getLogger(QuantityDTO.class.getName());
 
-//    Interface representing measurable unit.
+    //    Interface representing measurable unit.
     interface IMeasurableUnit {
         String getUnitName();
         String getMeasurementType();
     }
 
-//    Length Units
+    //    Length Units
     public enum LengthUnit implements IMeasurableUnit {
         FEET("FEET"),
         INCHES("INCHES"),
@@ -50,7 +50,7 @@ public class QuantityDTO {
         }
     }
 
-//    Volume Units
+    //    Volume Units
     public enum VolumeUnit implements IMeasurableUnit {
         LITRE("LITRE"),
         MILLILITER("MILLILITER"),
@@ -73,7 +73,7 @@ public class QuantityDTO {
         }
     }
 
-//    Weight Units
+    //    Weight Units
     public enum WeightUnit implements IMeasurableUnit {
         MILLIGRAM("MILLIGRAM"),
         GRAM("GRAM"),
@@ -98,7 +98,7 @@ public class QuantityDTO {
         }
     }
 
-//    Temperature Units
+    //    Temperature Units
     public enum TemperatureUnit implements IMeasurableUnit {
         CELSIUS("CELSIUS"),
         FAHRENHEIT("FAHRENHEIT");
@@ -120,27 +120,27 @@ public class QuantityDTO {
         }
     }
 
-//    Value of the quantity
+    //    Value of the quantity
     @NotNull(message = "Value cannot be empty")
     @Schema(example = "1.0")
     public double value;
 
-//    Unit of the quantity
+    //    Unit of the quantity
     @NotNull(message = "Unit cannot be null")
     @Schema(example = "FEET", allowableValues = {
-                    "FEET", "INCHES", "YARDS", "CENTIMETERS",
-                    "LITRE", "MILLILITER", "GALLON",
-                    "MILLIGRAM", "GRAM", "KILOGRAM", "POUND", "TONNE",
-                    "CELSIUS", "FAHRENHEIT"
-            })
+            "FEET", "INCHES", "YARDS", "CENTIMETERS",
+            "LITRE", "MILLILITER", "GALLON",
+            "MILLIGRAM", "GRAM", "KILOGRAM", "POUND", "TONNE",
+            "CELSIUS", "FAHRENHEIT"
+    })
     public String unit;
 
-//    Measurement type
+    //    Measurement type
     @NotNull(message = "Measurement type cannot be null")
     @Pattern(regexp = "LengthUnit|VolumeUnit|WeightUnit|TemperatureUnit", message = "Measurement type must be one of: LengthUnit, VolumeUnit, WeightUnit, TemperatureUnit")
     @Schema(example = "LengthUnit",  allowableValues = {
-                    "LengthUnit", "VolumeUnit", "WeightUnit", "TemperatureUnit"
-            })
+            "LengthUnit", "VolumeUnit", "WeightUnit", "TemperatureUnit"
+    })
     public String measurementType;
 
     // Constructor using enum
@@ -151,7 +151,7 @@ public class QuantityDTO {
     }
 
 
-//    Custom validation to check if unit matches measurement type
+    //    Custom validation to check if unit matches measurement type
     @AssertTrue(message = "Unit must be valid for the specified measurement type")
     public boolean isValidUnit() {
         logger.info("Validating unit: " + unit + " for measurement type: " + measurementType);
@@ -176,17 +176,10 @@ public class QuantityDTO {
                 default: return false;
             }
 
-        } 
+        }
         catch (IllegalArgumentException e) {
             return false;
         }
         return true;
-    }
-
-//    Main method for testing
-    public static void main(String[] args) {
-        QuantityDTO dto = new QuantityDTO(1.0, "FEET", "LengthUnit");
-
-        System.out.println(dto);
     }
 }

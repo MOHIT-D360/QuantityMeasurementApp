@@ -1,8 +1,11 @@
-package com.app.quantitymeasurement.service;
+package com.app.quantitymeasurement.service.impl;
 
+import com.app.quantitymeasurement.dto.QuantityDTO;
+import com.app.quantitymeasurement.dto.QuantityMeasurementDTO;
 import com.app.quantitymeasurement.exception.QuantityMeasurementException;
 import com.app.quantitymeasurement.model.*;
 import com.app.quantitymeasurement.repository.QuantityMeasurementRepository;
+import com.app.quantitymeasurement.service.IQuantityMeasurementService;
 import com.app.quantitymeasurement.unit.IMeasurable;
 
 import lombok.RequiredArgsConstructor;
@@ -16,7 +19,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class QuantityMeasurementServiceImpl implements IQuantityMeasurementService {
-    private final QuantityMeasurementRepository repository ;
+    private final QuantityMeasurementRepository repository;
 
 
     private IMeasurable getUnit(QuantityDTO dto) {
@@ -26,7 +29,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
                     Class.forName("com.app.quantitymeasurement.unit." + dto.measurementType)
             );
         } catch (Exception e) {
-        	log.info("Invalid unit " + dto.measurementType);
+            log.info("Invalid unit " + dto.measurementType);
             throw new QuantityMeasurementException("Invalid unit");
         }
     }
@@ -48,12 +51,11 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
     @Override
     public QuantityMeasurementDTO compare(QuantityDTO thisDTO, QuantityDTO thatDTO) {
         try {
-        	log.info("validating compare request");
             validateSameType(thisDTO, thatDTO);
 
             double base1 = toBase(thisDTO);
             double base2 = toBase(thatDTO);
-            
+
             log.info(base1 + " " + base2);
 
             boolean result = Double.compare(base1, base2) == 0;

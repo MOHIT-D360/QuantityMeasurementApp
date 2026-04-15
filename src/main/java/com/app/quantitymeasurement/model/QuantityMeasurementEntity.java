@@ -74,8 +74,8 @@ public class QuantityMeasurementEntity {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     public LocalDateTime updatedAt;
-    
-//    Constructor for comparison operations
+
+    //    Constructor for comparison operations
     public QuantityMeasurementEntity(
             double thisValue,
             String thisUnit,
@@ -97,7 +97,7 @@ public class QuantityMeasurementEntity {
         this.isError = false;
     }
 
-//    Constructor for arithmetic operations
+    //    Constructor for arithmetic operations
     public QuantityMeasurementEntity(
             double thisValue,
             String thisUnit,
@@ -123,7 +123,7 @@ public class QuantityMeasurementEntity {
         this.isError = false;
     }
 
-//    Constructor for error cases
+    //    Constructor for error cases
     public QuantityMeasurementEntity(
             double thisValue,
             String thisUnit,
