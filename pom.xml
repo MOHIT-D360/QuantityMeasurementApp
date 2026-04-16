@@ -118,6 +118,8 @@
 			<scope>test</scope>
 		</dependency>
 
+
+
 	</dependencies>
 
 	<build>
@@ -130,6 +132,13 @@
 			</plugin>
 
 		</plugins>
+
 	</build>
 
+	<profiles>
+		<profile>
+			<id>production</id>
+			<!-- configs -->
+		</profile>
+	</profiles>
 </project>

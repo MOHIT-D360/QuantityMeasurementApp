@@ -2,13 +2,14 @@ package com.app.quantitymeasurement;
 
 import com.app.quantitymeasurement.dto.QuantityDTO;
 import com.app.quantitymeasurement.dto.QuantityInputDTO;
-import com.app.quantitymeasurement.dto.QuantityMeasurementDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+//import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,14 +22,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ApplicationTest {
+public class QuantityMeasurementTests {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	private ObjectMapper objectMapper;
 
-	public ApplicationTest() {
+	public QuantityMeasurementTests() {
 		this.objectMapper = new ObjectMapper();
 	}
 
