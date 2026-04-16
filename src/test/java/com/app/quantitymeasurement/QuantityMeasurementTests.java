@@ -203,7 +203,6 @@ public class QuantityMeasurementTests {
 				.andExpect(status().isOk());
 	}
 
-
 	@Test
 	@Order(15)
 	void testCompare_UnitValidationFails() throws Exception {
